@@ -5,6 +5,9 @@
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 
   <persistence-unit name="ApplicationPU">
+  
+  	<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+  	
   	<class>mx.bluecode.model.entities.Persona</class>
   	
     <properties>
@@ -12,8 +15,10 @@
         <property name="javax.persistence.jdbc.url" value="jdbc:h2:~/test" />
         <property name="javax.persistence.jdbc.user" value="sa" />
         <property name="javax.persistence.jdbc.password" value="" />
-        <property name="openjpa.Log" value="DefaultLevel=INFO, Tool=INFO"/>
-        <property name="openjpa.Multithreaded" value="true"/>
+        
+        
+        
+        <property name="openjpa.Log" value="DefaultLevel=INFO, Tool=INFO, SQL=Trace"/>        
         <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(foreignKeys=true,schemaAction='dropDB,add')"/>
 		<property name="openjpa.jdbc.SchemaFactory" value="native(foreignKeys=true)" />
 		<property name="openjpa.jdbc.MappingDefaults" value="ForeignKeyDeleteAction=restrict, JoinForeignKeyDeleteAction=restrict"/>

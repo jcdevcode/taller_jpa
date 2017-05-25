@@ -18,7 +18,7 @@
         
         
         
-        <property name="openjpa.Log" value="DefaultLevel=WARN, SQL=INFO"/>        
+        <property name="openjpa.Log" value="DefaultLevel=WARN, SQL=TRACE"/>        
         <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(foreignKeys=true,schemaAction='dropDB,add')"/>
 		<property name="openjpa.jdbc.SchemaFactory" value="native(foreignKeys=true)" />
 		<property name="openjpa.jdbc.MappingDefaults" value="ForeignKeyDeleteAction=restrict, JoinForeignKeyDeleteAction=restrict"/>

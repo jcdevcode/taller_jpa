@@ -62,6 +62,7 @@ public class CrudPersonaTest {
 		log.info("[DURANTE] LA TRANSACCIÓN ESTA ACTIVA?: {}", em.getTransaction().isActive());
 		log.info("SE PERSISTE EL ELEMENTO CON DATOS: {}", persona);
 		em.persist(persona);
+		persona.setApellidos("SAnchez");
 			
 		log.info("SE CIERRA LA TRANSACCIÓN HACIENDO COMMIT.");
 		em.getTransaction().commit();

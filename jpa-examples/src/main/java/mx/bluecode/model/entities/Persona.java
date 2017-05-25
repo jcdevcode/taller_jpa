@@ -15,7 +15,7 @@ public class Persona implements Serializable{
 	private static final long serialVersionUID = 3537020748450083556L;
 
 	@Id
-	@Column(name="ID_EMPLEADO")
+	@Column(name="ID_PERSONA")
 	private Long id;
 	
 	@Column(name="NOMBRE")

@@ -9,6 +9,7 @@
   	<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
   	
   	<class>mx.bluecode.model.entities.Persona</class>
+  	<class>mx.bluecode.model.entities.Animal</class>
   	
     <properties>
         <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
@@ -18,14 +19,16 @@
         
         
         
-        <property name="openjpa.Log" value="DefaultLevel=WARN, SQL=TRACE"/>        
+        <!-- <property name="openjpa.Log" value="DefaultLevel=WARN, SQL=TRACE, Tool=INFO"/>  -->
+        <property name="openjpa.Log" value="DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE"/>
+		<property name="openjpa.ConnectionFactoryProperties" value="PrintParameters=true" />
+		        
         <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(foreignKeys=true,schemaAction='dropDB,add')"/>
 		<property name="openjpa.jdbc.SchemaFactory" value="native(foreignKeys=true)" />
 		<property name="openjpa.jdbc.MappingDefaults" value="ForeignKeyDeleteAction=restrict, JoinForeignKeyDeleteAction=restrict"/>
 		
         
-        <!--  <property name="hibernate.dialect" value="" /> -->
-        <!--  <property name="hibernate.hbm2ddl.auto" value="" /> -->
+       
     </properties>
   </persistence-unit>
 

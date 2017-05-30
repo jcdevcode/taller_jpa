@@ -1,4 +1,4 @@
-package mx.bluecode;
+package mx.bluecode.test.sesiones.uno;
 
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -9,9 +9,7 @@ import javax.persistence.Persistence;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runners.MethodSorters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

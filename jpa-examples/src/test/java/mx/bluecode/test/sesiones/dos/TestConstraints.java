@@ -5,8 +5,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -48,10 +50,8 @@ public class TestConstraints {
 		Animal scoobyDoo = new Animal(3L, "Scoooooooooooby Doooooooobye Dooooooooooooooooooo", "Perro", TipoAlimentacion.OMNIVORO);
 		Animal simba = new Animal(4L, "Simba", null, TipoAlimentacion.CARNIVORO);
 		Animal timon = new Animal(5L, "Timón", "Suricata", null);
-		
-		
+			
 		em.getTransaction().begin();
-		em.getTransaction().setRollbackOnly();
 		log.info("Abriendo una transacción.");
 		em.persist(winniePhoo);
 		em.persist(ranaRene);
@@ -80,10 +80,18 @@ public class TestConstraints {
 	}
 	
 
-	@Test
+	/**
+	 * Prueba unitaria que intenta insertar un registro
+	 * que no cumple con los constraints especificados en JPA.
+	 * en esta prueba se espera que se lance una excepción del
+	 * tipo PersistenceException.
+	 */
+	@Test(expected=PersistenceException.class)
 	public void testA(){
 		insertarAnimales();
 		imprimirAnimales();
+		// Si la prueba llega hasta este punto se marca como fallida.
+		Assert.fail();
 	}
 	
 }

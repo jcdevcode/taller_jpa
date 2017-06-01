@@ -31,7 +31,7 @@ public class Animal implements Serializable{
 	private String tipo;
 	
 	@Column(name = "TIPO_ALIMENTACION", nullable = true)
-	@Enumerated(value=EnumType.STRING)
+	@Enumerated(value=EnumType.ORDINAL)
 	//@Enumerated(value=EnumType.ORDINAL)
 	private TipoAlimentacion tipoAlimentacion;
 	

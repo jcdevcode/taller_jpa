@@ -8,11 +8,14 @@
   
   	<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
   	
-  	<class>mx.bluecode.model.entities.Persona</class>
-  	<class>mx.bluecode.model.entities.Animal</class>
-  	<class>mx.bluecode.model.entities.inheritance.Personal</class>
-  	<class>mx.bluecode.model.entities.inheritance.PersonalTecnico</class>
-  	<class>mx.bluecode.model.entities.inheritance.PersonalNoTecnico</class>
+  	 <!-- <class>mx.bluecode.model.entities.Persona</class> --> 
+<!--   		<class>mx.bluecode.model.entities.inheritance.Personal</class> -->
+<!--   	<class>mx.bluecode.model.entities.inheritance.PersonalTecnico</class> -->
+<!--   	<class>mx.bluecode.model.entities.inheritance.PersonalNoTecnico</class> -->
+  	 <class>mx.bluecode.model.entities.relations.Empleado</class>
+  	<class>mx.bluecode.model.entities.relations.Direccion</class>
+  	  	<!--  <class>mx.bluecode.model.entities.Animal</class>-->
+  	
   	
     <properties>
         <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />

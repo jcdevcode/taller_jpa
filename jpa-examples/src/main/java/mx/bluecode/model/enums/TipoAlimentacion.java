@@ -6,7 +6,9 @@ package mx.bluecode.model.enums;
  *
  */
 public enum TipoAlimentacion {
-	 HERVIVORO("SE ALIMENTA DE HIERBAS"), CARNIVORO("SE ALIMENTA DE CARNE"), OMNIVORO("SE ALIMENTA DE HIERBAS Y CARNE");
+	 HERVIVORO("SE ALIMENTA DE HIERBAS"), //0 
+	 CARNIVORO("SE ALIMENTA DE CARNE"), // 1
+	 OMNIVORO("SE ALIMENTA DE HIERBAS Y CARNE"); //2
 	
 	private TipoAlimentacion(String description) {
 		this.description = description;

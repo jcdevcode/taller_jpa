@@ -3,6 +3,7 @@ package mx.bluecode.model.entities.inheritance;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -19,14 +20,14 @@ import mx.bluecode.model.enums.AreaLaboral;
 @Table(name = "TBL_PERSONAL")
 
 // 1: SINGLE_TABLE
-//@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-//@DiscriminatorColumn(name="TIPO_PERSONAL")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="TIPO_PERSONAL")
 
 // 2: JOINED
 //@Inheritance(strategy=InheritanceType.JOINED)
 
 // 3: TABLE_PER_CLASS
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 
 
 public class Personal implements Serializable{

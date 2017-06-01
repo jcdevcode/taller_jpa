@@ -7,11 +7,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import org.junit.Assert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 
 import mx.bluecode.model.entities.inheritance.Personal;
 import mx.bluecode.model.entities.inheritance.PersonalNoTecnico;
@@ -103,27 +105,17 @@ public class TestHerencia {
 			log.info(personal.toString());
 		}
 		log.info("---- ---- ---- ---- \n \n");
+		Assert.assertNotNull(personalEmpresa);
+		Assert.assertFalse(personalEmpresa.isEmpty());
 	}
 	
-	
-	
-	private void imprimirPersonalDesdeBaseDeDatos(){
-		log.info("---- IMPRIMIENDO EL PERSONAL DESDE UN SQL NATIVO ----");
-		
-		
-		
-		
-		
-		log.info("---- ---- ---- ---- \n \n");
-	}
-	
+
 	
 	@Test
 	public void testA(){
 		insertarPersonalTecnico();
 		insertarPersonalNoTecnico();
 		imprimirPersonal();
-		//imprimirPersonalDesdeBaseDeDatos();
 		
 	}
 }

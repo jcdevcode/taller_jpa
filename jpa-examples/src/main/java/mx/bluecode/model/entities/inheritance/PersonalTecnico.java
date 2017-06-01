@@ -10,12 +10,14 @@ import mx.bluecode.model.enums.AreaLaboral;
 
 @Entity
 // 1
- @DiscriminatorValue("PERSONAL TECNICO")
+@DiscriminatorValue("PERSONAL TECNICO")
 
 // 2
 //@Table(name="TBL_PERSONAL_TECNICO")
 //@PrimaryKeyJoinColumn(referencedColumnName="ID")
 
+//3
+//@Table(name="TBL_PERSONAL_TECNICO")
 public class PersonalTecnico extends Personal implements Serializable{
 	
 	private static final long serialVersionUID = -200319054274350999L;

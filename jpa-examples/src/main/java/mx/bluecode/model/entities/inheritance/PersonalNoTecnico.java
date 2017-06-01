@@ -4,19 +4,20 @@ import java.io.Serializable;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
 
 import mx.bluecode.model.enums.AreaLaboral;
 
 @Entity
 // 1
- @DiscriminatorValue("PERSONAL NO TECNICO")
+@DiscriminatorValue("PERSONAL NO TECNICO")
 
 // 2
 //@Table(name="TBL_PERSONAL_NO_TECNICO")
 //@PrimaryKeyJoinColumn(referencedColumnName="ID")
 
+
+// 3
+//@Table(name="TBL_PERSONAL_NO_TECNICO")
 
 public class PersonalNoTecnico extends Personal implements Serializable{
 

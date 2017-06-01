@@ -32,7 +32,7 @@ public class Empleado implements Serializable{
 	@Column(name="CODIGO_EMP_UNICO", unique=true)
 	private String codigoEmpladoUnico;
 	
-	@OneToOne(cascade ={CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.DETACH, CascadeType.MERGE})
+	@OneToOne(cascade ={CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
 //	@OneToOne
 	@JoinColumn(name="ID_DIRECCION")
 	private Direccion direccion;

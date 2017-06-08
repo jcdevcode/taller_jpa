@@ -2,12 +2,14 @@ package bluecode.mx;
 
 import java.util.List;
 
+import org.apache.openjpa.lib.log.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import bluecode.mx.jpa.dto.EmpleadoDto;
 import bluecode.mx.jpa.entities.Direccion;
 import bluecode.mx.jpa.entities.Empleado;
+import bluecode.mx.jpa.entities.Empresa;
 
 public class OneToOneTest extends BaseTest{
 
@@ -25,7 +27,13 @@ public class OneToOneTest extends BaseTest{
 		empleado.setIdEmpleado(1L);
 		empleado.setNombre("John Smith");
 		empleado.setDireccion(direccion);
-
+		
+		Empresa empresa = new Empresa();
+		empresa.setIdEmpresa(1L);
+		empresa.setNombreEmpresa("AMK TECHNOLOGIES");
+		
+		empleado.setEmpresa(empresa);
+		
 		em.getTransaction().begin();
 		em.persist(empleado);
 		em.getTransaction().commit();
@@ -47,7 +55,7 @@ public class OneToOneTest extends BaseTest{
 
 		log.info("DATOS EMPLEADO: {}", direccion.getEmpleado());
 		
-		log.info("\n \n \n");
+		log.info("------------------ \n \n \n");
 		
 		em.detach(direccion);
 	}
@@ -57,17 +65,20 @@ public class OneToOneTest extends BaseTest{
 		
 		String query = "Select new bluecode.mx.jpa.dto.EmpleadoDto(o.idEmpleado, o.nombre, o.empresa.nombreEmpresa, o.direccion.pais ) FROM Empleado AS o";
 		List<EmpleadoDto> empleados = em.createQuery(query, EmpleadoDto.class).getResultList();
-		
-		for (EmpleadoDto empleadoDto : empleados) {
-			log.info("{}", empleadoDto);
+		log.info("EMPLEADOS ENCONTRADOS: {}", empleados.size());
+		for (EmpleadoDto emp : empleados) {
+			log.info("INFO DEL EMPLEADO: {}", emp);
 		}
+		
+		
+		log.info("------------------ \n \n \n");
 	}
 
 	public static void main(String[] args) {
 		initPersistenceContext();
 		crearEmpleado();
 		recuperarEmpleado();
-		//recuperarDireccion();
+		recuperarDireccion();
 		closePersistenceContext();
 	}
 

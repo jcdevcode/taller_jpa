@@ -42,7 +42,7 @@ public class Empleado{
 	)
 	private List<Proyecto> proyectos;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL, optional = true)
     @JoinColumn(name="ID_EMPRESA")
 	private Empresa empresa;
 

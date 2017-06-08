@@ -22,12 +22,6 @@ public class Empresa {
 	private String nombreEmpresa;
 	
 	
-	@OneToMany(mappedBy="empresa", cascade=CascadeType.ALL, fetch =FetchType.EAGER)
-	private List<Empleado> empleados;
-	
-	@OneToMany(mappedBy="empresa", cascade=CascadeType.ALL, fetch =FetchType.EAGER)
-	private List<Proyecto> proyectos;
-
 	public Long getIdEmpresa() {
 		return idEmpresa;
 	}

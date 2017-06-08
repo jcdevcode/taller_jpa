@@ -38,21 +38,6 @@ public class Empresa {
 		this.nombreEmpresa = nombreEmpresa;
 	}
 
-	public List<Empleado> getEmpleados() {
-		return empleados;
-	}
-
-	public void setEmpleados(List<Empleado> empleados) {
-		this.empleados = empleados;
-	}
-
-	public List<Proyecto> getProyectos() {
-		return proyectos;
-	}
-
-	public void setProyectos(List<Proyecto> proyectos) {
-		this.proyectos = proyectos;
-	}
 
 	@Override
 	public String toString() {

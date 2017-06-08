@@ -7,11 +7,11 @@
 	<persistence-unit name="JPARelationsPU">
 	  
 	<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
-	
-	<class>bluecode.mx.jpa.model.entities.Empleado</class>
-	<class>bluecode.mx.jpa.model.entities.Direccion</class>
-	<class>bluecode.mx.jpa.model.entities.Telefono</class>
-  	
+  	<class>bluecode.mx.jpa.entities.Empleado</class>
+  	<class>bluecode.mx.jpa.entities.Direccion</class>
+  	<class>bluecode.mx.jpa.entities.Telefono</class>
+  	<class>bluecode.mx.jpa.entities.Proyecto</class>
+  	<class>bluecode.mx.jpa.entities.Empresa</class>
   	
   	
     <properties>

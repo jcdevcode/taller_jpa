@@ -1,69 +1,74 @@
 package bluecode.mx;
 
-import org.junit.Assert;
-import org.junit.Test;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import bluecode.mx.jpa.model.entities.Direccion;
-import bluecode.mx.jpa.model.entities.Empleado;
-import bluecode.mx.jpa.model.entities.Telefono;
+import bluecode.mx.jpa.dto.EmpleadoDto;
+import bluecode.mx.jpa.entities.Direccion;
+import bluecode.mx.jpa.entities.Empleado;
 
 public class OneToOneTest extends BaseTest{
+
 	private static final Logger log = LoggerFactory.getLogger(OneToOneTest.class);
 	
-	public void insertaEmpleado(){
-		log.info("---- INSERTANDO EMPLEADO ---- ");
-		Direccion direccion = new Direccion();		
-		direccion.setId(1L);
-		direccion.setUbicacion("Tlaco 21, del Valle. CD Mx.");
-		direccion.setCodigoPostal(56562);
-		
-		Empleado juan = new Empleado();
-		juan.setId(1L);
-		juan.setNombre("Juan Perez");
-		juan.setDireccion(direccion);
-		
+	public static void crearEmpleado() {
+		log.info("---- CREANDO EMPLEADO EN BD ----");
+
+		Direccion direccion = new Direccion();
+		direccion.setIdDireccion(1L);
+		direccion.setPais("México");
+		direccion.setCiudad("CD-MX");
+
+		Empleado empleado = new Empleado();
+		empleado.setIdEmpleado(1L);
+		empleado.setNombre("John Smith");
+		empleado.setDireccion(direccion);
+
 		em.getTransaction().begin();
-		
-		em.persist(juan);
-		
+		em.persist(empleado);
 		em.getTransaction().commit();
-		
-		Assert.assertNotNull(juan.getId());
-		Assert.assertNotNull(juan.getDireccion().getId());
-		
-		log.info("-------- \n \n");
-	}
-	
-	
-	public void imprimeDatosEmpleado(){
-		log.info("--- BUSCANDO EMPLEADO POR ID .-----");
-		Empleado emp = em.find(Empleado.class, 1L);				
-		log.info("{}", emp);
-		
-		log.info("-------- \n \n");
-	}
-	
-	
-	
-	public void eliminaEmpleado(){
-		log.info("--- ELIMINANDO EMPLEADO POR ID ----");
-		em.getTransaction().begin();
-		Empleado emp = em.find(Empleado.class, 1L);
-		em.remove(emp);
-		em.getTransaction().commit();
-		log.info("-------- \n \n");
+
+		em.detach(empleado);
+		em.detach(direccion);
+
+		log.info("\n \n \n");
+
 	}
 
-	@Test
-	public void runTest(){
-		insertaEmpleado();
-		imprimeDatosEmpleado();
-		eliminaEmpleado();
-		imprimeDatosEmpleado();	
-	
+	public static void recuperarDireccion() {
+		log.info("---- RECUPERANDO DIRECCION PARA PROBAR LA RELACION BIDIRECCIONAL ----");
+		Direccion direccion = em.find(Direccion.class, 1L);
+
+		log.info("DATOS DIRECCIÓN: {}", direccion);
+
+		log.info("AHORA SE HACE UN GET AL AMPLEADO ASOCIADO A LA DIRECCION.");
+
+		log.info("DATOS EMPLEADO: {}", direccion.getEmpleado());
+		
+		log.info("\n \n \n");
+		
+		em.detach(direccion);
 	}
-	
-	
+
+	private static void recuperarEmpleado() {
+		log.info("---- RECUPERANDO EMPLEADO ----");
+		
+		String query = "Select new bluecode.mx.jpa.dto.EmpleadoDto(o.idEmpleado, o.nombre, o.empresa.nombreEmpresa, o.direccion.pais ) FROM Empleado AS o";
+		List<EmpleadoDto> empleados = em.createQuery(query, EmpleadoDto.class).getResultList();
+		
+		for (EmpleadoDto empleadoDto : empleados) {
+			log.info("{}", empleadoDto);
+		}
+	}
+
+	public static void main(String[] args) {
+		initPersistenceContext();
+		crearEmpleado();
+		recuperarEmpleado();
+		//recuperarDireccion();
+		closePersistenceContext();
+	}
+
 }

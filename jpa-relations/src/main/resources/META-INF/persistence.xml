@@ -4,38 +4,28 @@
              http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 
-  <persistence-unit name="JPARelationsPU">
-  
-	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-
+	<persistence-unit name="JPARelationsPU">
+	  
+	<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+	
+	<class>bluecode.mx.jpa.model.entities.Empleado</class>
+	<class>bluecode.mx.jpa.model.entities.Direccion</class>
+	<class>bluecode.mx.jpa.model.entities.Telefono</class>
   	
-<!--   	<class>bluecode.mx.jpa.model.entities.ToDo</class> -->
-  	<class>bluecode.mx.jpa.model.entities.Lector</class>
-  	<class>bluecode.mx.jpa.model.entities.Direccion</class>
   	
-	<properties>
-		<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
-		<property name="javax.persistence.jdbc.url" value="jdbc:h2:~/test" />
-		<property name="javax.persistence.jdbc.user" value="sa" />
-		<property name="javax.persistence.jdbc.password" value="" />
-		    
-		<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
-		<property name="eclipselink.create-ddl-jdbc-file-name" value="createDDL_ddlGeneration.jdbc"/>
-		<property name="eclipselink.drop-ddl-jdbc-file-name" value="dropDDL_ddlGeneration.jdbc"/>
-		<property name="eclipselink.ddl-generation.output-mode" value="both"/>		    
-		    
-		<property name="eclipselink.ddl-generation.output-mode" value="database" />
-		<property name="eclipselink.logging.parameters" value="true"/>
-		<property name="eclipselink.logging.level" value="FINE"/>
-		
-		 
+  	
+    <properties>
+        <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+        <property name="javax.persistence.jdbc.url" value="jdbc:h2:~/test" />
+        <property name="javax.persistence.jdbc.user" value="sa" />
+        <property name="javax.persistence.jdbc.password" value="" />        
         
-        
-       
-    
-		
+        <property name="openjpa.Log" value="DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE"/>
+		<property name="openjpa.ConnectionFactoryProperties" value="PrintParameters=true" />		        
+        <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(foreignKeys=true,schemaAction='dropDB,add')"/>
+		<property name="openjpa.jdbc.SchemaFactory" value="native(foreignKeys=true)" />
+		<property name="openjpa.jdbc.MappingDefaults" value="ForeignKeyDeleteAction=restrict, JoinForeignKeyDeleteAction=restrict"/>
     </properties>
-    
   </persistence-unit>
 
 </persistence>

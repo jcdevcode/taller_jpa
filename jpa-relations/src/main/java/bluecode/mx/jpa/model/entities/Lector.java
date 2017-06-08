@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -26,7 +27,9 @@ public class Lector extends Persona{
 	@Column(name = "NUMERO_SOCIO", nullable = false , length = 10, unique = true)
 	private String numeroSocio;
 	
-	@OneToOne(cascade={ CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true, optional = false)
+	//@OneToOne(fetch = FetchType.LAZY, cascade={ CascadeType.PERSIST})
+	@OneToOne(fetch = FetchType.LAZY, cascade={ CascadeType.PERSIST, CascadeType.REMOVE})
+	//@OneToOne(fetch = FetchType.LAZY, cascade={ CascadeType.PERSIST}, orphanRemoval = true)
 	@JoinColumn(name = "ID_DIRECCION")
 	private Direccion direccion;
 	
@@ -48,8 +51,14 @@ public class Lector extends Persona{
 		this.numeroSocio = numeroSocio;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	
+	public Direccion getDireccion() {
+		return direccion;
+	}
+
+
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
 	}
 
 
@@ -60,7 +69,8 @@ public class Lector extends Persona{
 				+ ", Nombre = " + getNombre()
 				+ ", Fecha de Nacimiento = " + getFechaNacimiento()
 				+ ", Género = " + getGenero()  
-				+ ", Número de socio = " + getNumeroSocio();
+				+ ", Número de socio = " + getNumeroSocio()
+				+ "]";
 	}
 	
 	

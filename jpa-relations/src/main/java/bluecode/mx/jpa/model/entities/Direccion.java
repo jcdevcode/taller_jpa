@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,18 +20,18 @@ public class Direccion implements Serializable{
 
 	@Id
 	@Column(name = "ID_DIRECCION")
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long idDireccion;
 	
 	@Column(nullable = false)
 	private String calle;
 	
+	@Column(name = "NUM_INTERIOR")
 	private String numInterior;
 	
-	@Column(nullable = false)
+	@Column(name = "NUM_EXTERIOR", nullable = false)
 	private String numExterior;	
 	
-	@Column(nullable = false, length = 5)
+	@Column(name = "CODIGO_POSTAL", nullable = false, length = 5)
 	private Long codigoPostal;
 	
 	@Column(length = 100)
@@ -40,7 +40,8 @@ public class Direccion implements Serializable{
 	@Column(length = 50)
 	private String estado;
 	
-	
+	@OneToOne(mappedBy = "direccion")
+	private Lector lector;
 
 	public Direccion() {
 		super();
@@ -116,6 +117,28 @@ public class Direccion implements Serializable{
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+	
+
+
+	public Lector getLector() {
+		return lector;
+	}
+
+
+
+	public void setLector(Lector lector) {
+		this.lector = lector;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Direccion [idDireccion=" + idDireccion + ", calle=" + calle + ", numInterior=" + numInterior
+				+ ", numExterior=" + numExterior + ", codigoPostal=" + codigoPostal + ", localidad=" + localidad
+				+ ", estado=" + estado + "]";
 	}
 	
 	

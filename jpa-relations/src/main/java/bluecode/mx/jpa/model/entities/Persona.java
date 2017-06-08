@@ -20,13 +20,11 @@ import bluecode.mx.jpa.model.enums.TypoGenero;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@MappedSuperclass
 public class Persona implements Serializable{
 
 	private static final long serialVersionUID = -3091149765775140810L;
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Id	
 	@Column(name="ID")
 	private Long id;
 	

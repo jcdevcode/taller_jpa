@@ -6,7 +6,8 @@
 
   <persistence-unit name="JPARelationsPU">
   
-  	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
   	
 <!--   	<class>bluecode.mx.jpa.model.entities.ToDo</class> -->
   	<class>bluecode.mx.jpa.model.entities.Lector</class>
@@ -25,7 +26,14 @@
 		    
 		<property name="eclipselink.ddl-generation.output-mode" value="database" />
 		<property name="eclipselink.logging.parameters" value="true"/>
-		<property name="eclipselink.logging.level" value="FINE"/>       
+		<property name="eclipselink.logging.level" value="FINE"/>
+		
+		 
+        
+        
+       
+    
+		
     </properties>
     
   </persistence-unit>
